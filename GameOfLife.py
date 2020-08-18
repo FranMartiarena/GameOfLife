@@ -8,7 +8,7 @@ screen = pygame.display.set_mode((1100,1000))
 
 dis = 1000 // 100
 
-screen.fill((0,0,0))
+screen.fill((255,255,255))
 
 draw_limits = []
 
@@ -17,10 +17,10 @@ strange_square = [[0, 24], [0, 74], [1, 24], [1, 74], [2, 24], [2, 74], [3, 24],
 square =[[39, 39], [39, 40], [39, 41], [39, 42], [39, 43], [39, 44], [39, 45], [39, 46], [39, 47], [39, 48], [39, 49], [39, 50], [39, 51], [39, 52], [39, 53], [39, 54], [39, 55], [39, 56], [39, 57], [39, 58], [40, 39], [41, 39], [42, 39], [43, 39], [44, 39], [45, 39], [46, 39], [47, 39], [48, 39], [49, 39], [50, 39], [51, 39], [52, 39], [53, 39], [54, 39], [55, 39], [56, 39], [57, 39], [58, 39], [39, 39], [39, 40], [39, 41], [39, 42], [39, 43], [39, 44], [39, 45], [39, 46], [39, 47], [39, 48], [39, 49], [39, 50], [39, 51], [39, 52], [39, 53], [39, 54], [39, 55], [39, 56], [39, 57], [39, 58], [39, 59], [40, 39], [40, 59], [41, 39], [41, 59], [42, 39], [42, 59], [43, 39], [43, 59], [44, 39], [44, 59], [45, 39], [45, 59], [46, 39], [46, 59], [47, 39], [47, 59], [48, 39], [48, 59], [49, 39], [49, 59], [50, 39], [50, 59], [51, 39], [51, 59], [52, 39], [52, 59], [53, 39], [53, 59], [54, 39], [54, 59], [55, 39], [55, 59], [56, 39], [56, 59], [57, 39], [57, 59], [58, 39], [58, 59], [59, 39], [59, 40], [59, 41], [59, 42], [59, 43], [59, 44], [59, 45], [59, 46], [59, 47], [59, 48], [59, 49], [59, 50], [59, 51], [59, 52], [59, 53], [59, 54], [59, 55], [59, 56], [59, 57], [59, 58], [59, 59]]
 
 def message(generacion, vivos):
-    pygame.draw.rect(screen, (0,0,0), (1010, 0, 90,40))
+    pygame.draw.rect(screen, (255,255,255), (1010, 0, 90,40))
     font = pygame.font.SysFont(None, 25)
-    screen_txt1 = font.render(f"Gen: {str(generacion)}", True, (255,255,255))
-    screen_txt2 = font.render(f"Cells: {str(vivos)}", True, (255,255,255))
+    screen_txt1 = font.render(f"Gen: {str(generacion)}", True, (0,0,0))
+    screen_txt2 = font.render(f"Cells: {str(vivos)}", True, (0,0,0))
     screen.blit(screen_txt1, [1010,0])
     screen.blit(screen_txt2, [1010,20])
     pygame.display.flip()
@@ -79,9 +79,9 @@ def drawGrid(area, gen, alive):
             if area[y,x] == 0:
                 #rect = pygame.Rect(x*dis, y*dis, dis, dis)#left, top, width, height
                 #pygame.draw.rect(screen, (25,25,25), rect, 1)
-                pygame.draw.rect(screen, (0,0,0), ((x)*dis+1, (y)*dis+1, dis-1, dis-1 ))
+                pygame.draw.rect(screen, (255,255,255), ((x)*dis, (y)*dis, dis, dis ))
             elif area[y,x] == 1:
-                pygame.draw.rect(screen, (255,255,255), ((x)*dis+1, (y)*dis+1, dis-1, dis-1 ))
+                pygame.draw.rect(screen, (0,0,0), ((x)*dis, (y)*dis, dis, dis ))
 
     pygame.display.flip()
 
@@ -97,7 +97,7 @@ def drawCells():
     #plane = preshape(plane)
 
 
-    screen.fill((0,0,0))
+    screen.fill((255,255,255))
     drawGrid(plane, 0, 0)
     click = 0
     while True:
@@ -116,7 +116,7 @@ def drawCells():
                 click = 0
 
             if click == 1 and posx < 101:
-                pygame.draw.rect(screen, (255,255,255), ((posx)*dis+1, (posy)*dis+1, dis-1, dis-1 ))
+                pygame.draw.rect(screen, (0,0,0), ((posx)*dis, (posy)*dis, dis, dis ))
                 plane[posy,posx] = 1
                 pygame.display.flip()
             else:
